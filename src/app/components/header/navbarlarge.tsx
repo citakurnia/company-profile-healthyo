@@ -26,7 +26,7 @@ export default function NavBarLarge() {
           href="/pages/team"
           className="text-blue-deep hover:text-black/70 font-semibold"
         >
-          TEAM BEHIND
+          TEAM
         </Link>
       </nav>
     </>

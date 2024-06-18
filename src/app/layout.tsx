@@ -20,7 +20,6 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <div className="relative flex flex-col min-h-screen bg-blue-med z-5">
-          {/* <div className="absolute inset-0 bg-gradient-to-r from-blue-med to-blue-soft w-full h-full md:w-2/5"></div> */}
           <div className="relative bg-white-broken/40 w-full z-50 mx-auto px-4 py-2 md:py-3 lg:px-10">
             <Header />
           </div>

@@ -39,7 +39,7 @@ export default function ProductOverview(): ReactNode {
   if (testimonies !== null) {
     return (
       <>
-        <div className="flex flex-col py-4 px-4 m-6 mb-12 rounded-3xl bg-blue-soft">
+        <div className="flex flex-col py-4 px-4 m-6 mb-8 rounded-3xl bg-blue-soft">
           <div className="flex flex-col px-2 py-2 lg:pt-4 md:px-10 lg:px-2 xl:px-10">
             <TestimonyCard testimonies={testimonies} />
           </div>

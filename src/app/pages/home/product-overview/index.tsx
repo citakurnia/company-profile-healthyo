@@ -48,7 +48,7 @@ export default function ProductOverview(): ReactNode {
             href="/pages/products"
             className="text-sm text-right mt-2 mr-4 text-blue-deep hover:underline hover:underline-offset-2"
           >
-            Click here for more details...
+            Click here for more details
           </Link>
         </div>
       </>
