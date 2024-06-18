@@ -58,10 +58,17 @@ function ProductCard({
 }: {
   products: Entry<TypeProductFields, undefined, string>[];
 }) {
+  const productImages = [
+    "/1plain.png",
+    "/2strawberry.png",
+    "/3blueberry.png",
+    "/4mango.png",
+  ];
+
   return (
     <>
       <div className="lg:hidden">
-        <TabProduct products={products} />
+        <TabProduct products={products} images={productImages} />
       </div>
       <div className="hidden lg:flex lg:flex-row lg:space-x-4 justify-between lg:px-2">
         {products.map((product) => (
@@ -85,7 +92,7 @@ function ProductCard({
               <Image
                 className="drop-shadow-md"
                 alt="image"
-                src={`https:${product.fields.productPhoto.fields.file.url}`}
+                src={productImages[product.fields.productId - 1]}
                 width={200}
                 height={200}
               />

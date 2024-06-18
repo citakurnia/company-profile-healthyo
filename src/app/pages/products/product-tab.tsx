@@ -42,8 +42,10 @@ function a11yProps(index: number) {
 
 export default function TabProduct({
   products,
+  images,
 }: {
   products: Entry<TypeProductFields, undefined, string>[];
+  images: string[];
 }) {
   const [value, setValue] = React.useState(0);
 
@@ -79,7 +81,7 @@ export default function TabProduct({
               <Image
                 className="drop-shadow-md"
                 alt="image"
-                src={`https:${product.fields.productPhoto.fields.file.url}`}
+                src={images[product.fields.productId - 1]}
                 width={200}
                 height={200}
               />

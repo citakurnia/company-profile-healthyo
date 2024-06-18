@@ -5,8 +5,10 @@ import Carousel from "react-material-ui-carousel";
 
 export default function CarouselProduct({
   products,
+  images,
 }: {
   products: Entry<TypeProductFields, undefined, string>[];
+  images: string[];
 }) {
   return (
     <>
@@ -19,7 +21,7 @@ export default function CarouselProduct({
             <Image
               className="drop-shadow-md"
               alt="image"
-              src={`https:${product.fields.productPhoto.fields.file.url}`}
+              src={images[product.fields.productId - 1]}
               width={200}
               height={200}
             />

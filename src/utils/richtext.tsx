@@ -19,7 +19,7 @@ export default function RichText({ document }: RichTextType) {
   }
 
   function Ol({ children }: { children: React.ReactNode }) {
-    return <ul>{children}</ul>;
+    return <ol>{children}</ol>;
   }
 
   function P({ children }: { children: React.ReactNode }) {

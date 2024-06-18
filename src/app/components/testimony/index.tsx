@@ -5,6 +5,7 @@ import { Entry } from "contentful";
 import { TypeTestimonyFields } from "@/types/contentful";
 import { ReactNode } from "react";
 import { useState, useEffect } from "react";
+import UserTeam from "@/types/random-user/TypeUserTeam";
 
 import Image from "next/image";
 import CarouselTestimony from "./testimony-carousel";
@@ -13,11 +14,11 @@ async function fetchTestimony(): Promise<
   Entry<TypeTestimonyFields, undefined, string>[]
 > {
   try {
-    const data = await client.getEntries<TypeTestimonyFields>({
+    const testimonies = await client.getEntries<TypeTestimonyFields>({
       content_type: "testimoni",
     });
     // console.log(data.items);
-    return data.items;
+    return testimonies.items;
   } catch (err) {
     throw new Error("Unable to catch testimony");
   }
@@ -27,13 +28,22 @@ export default function ProductOverview(): ReactNode {
   const [testimonies, setTestimonies] = useState<
     Entry<TypeTestimonyFields, undefined, string>[] | null
   >(null);
+  const [users, setUsers] = useState<UserTeam[]>([]);
+
+  async function fetchTestimonyandUser() {
+    try {
+      const response = await fetch("https://randomuser.me/api/?results=3");
+      const fetchedUsers = await response.json();
+      setUsers(fetchedUsers.results);
+      const fetchedTestimony = await fetchTestimony();
+      setTestimonies(fetchedTestimony);
+    } catch (err) {
+      throw new Error("Unable to catch User Teams");
+    }
+  }
 
   useEffect(() => {
-    async function fetchData() {
-      const data = await fetchTestimony();
-      setTestimonies(data);
-    }
-    fetchData();
+    fetchTestimonyandUser();
   }, []);
 
   if (testimonies !== null) {
@@ -41,7 +51,7 @@ export default function ProductOverview(): ReactNode {
       <>
         <div className="flex flex-col py-4 px-4 m-6 mb-8 rounded-3xl bg-blue-soft">
           <div className="flex flex-col px-2 py-2 lg:pt-4 md:px-10 lg:px-2 xl:px-10">
-            <TestimonyCard testimonies={testimonies} />
+            <TestimonyCard testimonies={testimonies} users={users} />
           </div>
         </div>
       </>
@@ -51,8 +61,10 @@ export default function ProductOverview(): ReactNode {
 
 function TestimonyCard({
   testimonies,
+  users,
 }: {
   testimonies: Entry<TypeTestimonyFields, undefined, string>[];
+  users: UserTeam[];
 }) {
   return (
     <>
@@ -60,22 +72,22 @@ function TestimonyCard({
         <div className="bg-white/50 rounded-full py-1">TESTIMONY</div>
       </h2>
       <div className="lg:hidden" style={{ textAlign: "center" }}>
-        <CarouselTestimony testimonies={testimonies} />
+        <CarouselTestimony testimonies={testimonies} users={users} />
       </div>
 
       <div className="hidden lg:flex lg:flex-row lg:space-x-5 justify-between lg:px-5">
-        {testimonies.map((testimony) => (
+        {testimonies.map((testimony, index) => (
           <div
             key={testimony.sys.id}
             className="mb-2 w-1/3 flex flex-col items-center"
           >
             <p className="mb-4 text-lg font-semibold text-black/80">
-              {testimony.fields.name}
+              {`${users[index].name.first} ${users[index].name.last}`}
             </p>
             <Image
               className="rounded-full"
               alt="image"
-              src={`https:${testimony.fields.closeUpPhoto.fields.file.url}`}
+              src={users[index].picture.large}
               width={125}
               height={125}
             />

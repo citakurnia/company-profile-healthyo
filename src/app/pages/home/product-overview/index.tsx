@@ -61,13 +61,19 @@ function ProductCard({
 }: {
   products: Entry<TypeProductFields, undefined, string>[];
 }) {
+  const productImages = [
+    "/1plain.png",
+    "/2strawberry.png",
+    "/3blueberry.png",
+    "/4mango.png",
+  ];
   return (
     <>
       <h2 className="pb-6 text-center">
         <div className="bg-white/50 rounded-full py-1">OUR PRODUCTS</div>
       </h2>
       <div className="lg:hidden" style={{ textAlign: "center" }}>
-        <CarouselProduct products={products} />
+        <CarouselProduct products={products} images={productImages} />
       </div>
 
       <div className="hidden lg:flex lg:flex-row lg:space-x-3 justify-between lg:px-5 xl:px-24">
@@ -79,7 +85,7 @@ function ProductCard({
             <Image
               className="drop-shadow-md"
               alt="image"
-              src={`https:${product.fields.productPhoto.fields.file.url}`}
+              src={productImages[product.fields.productId - 1]}
               width={200}
               height={200}
             />
