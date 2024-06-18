@@ -81,6 +81,7 @@ export default function AboutUs(): ReactNode {
 function SectionCard({ sectionDetail }: { sectionDetail: any }): ReactNode {
   const title: string = sectionDetail.fields.section;
   const titleUpperCase = title.toUpperCase();
+
   const { fields }: { fields: { file: { url: string } } } =
     sectionDetail.fields.photoRepresentation;
 

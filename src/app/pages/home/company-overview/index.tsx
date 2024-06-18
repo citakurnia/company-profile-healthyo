@@ -72,10 +72,13 @@ export default function CompanyOverview(): ReactNode {
 export function SectionCard({
   sectionDetail,
 }: {
-  sectionDetail: Entry<TypeCompanyDetailsFields, undefined, string>;
+  sectionDetail: any;
 }): ReactNode {
   const title: string = sectionDetail.fields.section;
   const titleUpperCase = title.toUpperCase();
+
+  const { fields }: { fields: { file: { url: string } } } =
+    sectionDetail.fields.photoRepresentation;
 
   return (
     <div className="flex flex-col px-2 py-2 lg:py-4 md:px-10 lg:px-2 xl:px-10">
@@ -86,7 +89,7 @@ export function SectionCard({
         <Image
           className="drop-shadow-lg"
           alt="image"
-          src={`https:${sectionDetail.fields.photoRepresentation?.fields.file.url}`}
+          src={`https:${fields.file.url}`}
           width={300}
           height={200}
           style={{ borderRadius: "30px" }}
