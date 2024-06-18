@@ -3,6 +3,7 @@
 import UserTeam from "@/types/random-user/TypeUserTeam";
 import React, { useEffect, useState } from "react";
 import CarouselUsers from "./users-team";
+import Image from "next/image";
 
 export default function Team() {
   const [users, setUsers] = useState<UserTeam[]>([]);
@@ -42,10 +43,13 @@ export default function Team() {
       <div className="hidden lg:flex lg:space-x-3 justify-between lg:px-5 xl:px-24">
         {users.map((user, index) => (
           <div className="flex flex-col items-center" key={index}>
-            <img
+            <Image
               src={user.picture.large}
               alt="User Photo"
-              style={{ borderRadius: "50%", height: "125px", width: "125px" }}
+              layout="fixed"
+              width={125}
+              height={125}
+              className="rounded-full"
             />
             <div className="mt-2 font-bold text-blue-deep text-lg">{`${user.name.first} ${user.name.last}`}</div>
             <div className="font-semibold mb-2">{expertise[index]}</div>

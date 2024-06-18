@@ -80,7 +80,7 @@ function TestimonyCard({
               height={125}
             />
             <p className="text-sm mt-4 p-3 text-black/80 text-pretty text-center bg-pink-soft/60 rounded-xl">
-              "{testimony.fields.testimonyText}"
+              &quot;{testimony.fields.testimonyText}&quot;
             </p>
           </div>
         ))}

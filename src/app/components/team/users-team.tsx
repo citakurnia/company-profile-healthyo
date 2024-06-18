@@ -1,4 +1,5 @@
 import UserTeam from "@/types/random-user/TypeUserTeam";
+import Image from "next/image";
 import Carousel from "react-material-ui-carousel";
 
 export default function CarouselUsers({
@@ -13,10 +14,13 @@ export default function CarouselUsers({
       <Carousel>
         {users.map((user, index) => (
           <div className="flex flex-col items-center" key={index}>
-            <img
+            <Image
               src={user.picture.large}
               alt="User Photo"
-              style={{ borderRadius: "50%", height: "150px", width: "150px" }}
+              layout="fixed"
+              width={125}
+              height={125}
+              className="rounded-full"
             />
             <div className="mt-2 font-bold text-blue-deep text-lg">{`${user.name.first} ${user.name.last}`}</div>
             <div className="font-semibold mb-2">{expertise[index]}</div>

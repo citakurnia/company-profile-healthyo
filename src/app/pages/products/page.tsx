@@ -66,6 +66,7 @@ function ProductCard({
       <div className="hidden lg:flex lg:flex-row lg:space-x-4 justify-between lg:px-2">
         {products.map((product) => (
           <Paper
+            key={product.fields.productId}
             square={false}
             elevation={1}
             sx={{
