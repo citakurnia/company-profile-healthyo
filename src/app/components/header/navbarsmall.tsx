@@ -8,7 +8,7 @@ export default function NavBarSmall({
 }) {
   return (
     <>
-      <div className="flex flex-col md:hidden bg-white-broken/70 shadow-lg rounded-lg p-4 absolute top-12 right-4 w-40">
+      <div className="flex flex-col md:hidden bg-white-broken/90 shadow-lg rounded-lg p-4 absolute top-12 right-4 w-40">
         <Link
           href="/."
           className="block mb-4 text-blue-deep hover:text-black/70 font-semibold text-center"

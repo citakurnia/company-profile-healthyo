@@ -17,7 +17,6 @@ async function fetchCompanyDetails(): Promise<
     const data = await client.getEntries<TypeCompanyDetailsFields>({
       content_type: "companyDetails",
     });
-    // console.log(data.items);
     return data.items;
   } catch (err) {
     throw new Error("Unable to catch company details");
@@ -69,11 +68,7 @@ export default function CompanyOverview(): ReactNode {
   }
 }
 
-export function SectionCard({
-  sectionDetail,
-}: {
-  sectionDetail: any;
-}): ReactNode {
+function SectionCard({ sectionDetail }: { sectionDetail: any }): ReactNode {
   const title: string = sectionDetail.fields.section;
   const titleUpperCase = title.toUpperCase();
 
@@ -87,12 +82,11 @@ export function SectionCard({
       </h2>
       <div className="flex flex-col md:flex-row lg:flex-col xl:flex-row py-3 lg:py-6 items-center text-pretty">
         <Image
-          className="drop-shadow-lg"
+          className="drop-shadow-lg rounded-3xl"
           alt="image"
           src={`https:${fields.file.url}`}
           width={300}
           height={200}
-          style={{ borderRadius: "30px" }}
         />
         <div className="mt-4 mx-3 md:mt-0 lg:mt-8 md:pl-10 lg:px-4 xl:pl-10 xl:mt-0 text-sm font-medium text-black/80 text-center md:text-left lg:text-center xl:text-left">
           {sectionDetail.fields.summary}

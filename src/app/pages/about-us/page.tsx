@@ -70,7 +70,7 @@ export default function AboutUs(): ReactNode {
             </div>
           </div>
         </div>
-        <div className="lg:px-24 lg:mb-10 xl:px-36">
+        <div className="lg:px-20 mb-10 xl:px-36">
           <Team />
         </div>
       </>
@@ -92,12 +92,11 @@ function SectionCard({ sectionDetail }: { sectionDetail: any }): ReactNode {
       </h2>
       <div className="flex flex-col items-center text-pretty">
         <Image
-          className="drop-shadow-lg my-4"
+          className="drop-shadow-lg my-4 rounded-3xl"
           alt="image"
           src={`https:${fields.file.url}`}
           width={300}
           height={200}
-          style={{ borderRadius: "30px" }}
         />
         <div className="mt-4 mx-3 text-sm font-medium text-black/80 text-balance">
           <RichText document={sectionDetail.fields.description} />

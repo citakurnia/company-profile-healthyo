@@ -17,9 +17,8 @@ export default function CarouselUsers({
             <Image
               src={user.picture.large}
               alt="User Photo"
-              layout="fixed"
-              width={125}
-              height={125}
+              width={120}
+              height={120}
               className="rounded-full"
             />
             <div className="mt-2 font-bold text-blue-deep text-lg">{`${user.name.first} ${user.name.last}`}</div>

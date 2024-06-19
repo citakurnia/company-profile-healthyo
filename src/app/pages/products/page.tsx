@@ -17,7 +17,6 @@ async function fetchProducts(): Promise<
     const data = await client.getEntries<TypeProductFields>({
       content_type: "product",
     });
-    // console.log(data.items);
     return data.items;
   } catch (err) {
     throw new Error("Unable to catch product information");
@@ -29,18 +28,23 @@ export default function ProductOverview(): ReactNode {
     Entry<TypeProductFields, undefined, string>[] | null
   >(null);
 
-  useEffect(() => {
-    async function fetchData() {
+  async function fetchData() {
+    try {
       const data = await fetchProducts();
       setProducts(data);
+    } catch (err) {
+      throw new Error("Unable to set product information");
     }
+  }
+
+  useEffect(() => {
     fetchData();
   }, []);
 
   if (products !== null) {
     return (
       <>
-        <div className="flex flex-col text-center pt-5 my-7 text-4xl font-bold text-white-broken drop-shadow-md">
+        <div className="flex flex-col text-center pt-5 my-7 text-3xl md:text-4xl font-bold text-white-broken drop-shadow-md">
           PICK YOUR FLAVOUR!
         </div>
         {/* <div className="flex flex-col py-4 px-4 m-6 rounded-3xl "> */}

@@ -2,7 +2,6 @@ import * as React from "react";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import Typography from "@mui/material/Typography";
-import Box from "@mui/material/Box";
 import { Entry } from "contentful";
 import { TypeProductFields } from "@/types/contentful";
 import Image from "next/image";
@@ -23,11 +22,13 @@ function TabPanel(props: TabPanelProps) {
       id={`vertical-tabpanel-${index}`}
       aria-labelledby={`vertical-tab-${index}`}
       {...other}
+      className="w-full"
+      style={{ height: "100%", display: value === index ? "block" : "none" }}
     >
       {value === index && (
-        <Box sx={{ p: 3 }}>
+        <div className="p-3 h-full flex flex-col justify-center">
           <Typography>{children}</Typography>
-        </Box>
+        </div>
       )}
     </div>
   );
@@ -55,7 +56,7 @@ export default function TabProduct({
 
   if (products !== null) {
     return (
-      <div className="flex flex-shrink-0 flex-row bg-white/70 rounded-2xl">
+      <div className="flex flex-shrink-0 flex-row bg-white/70 rounded-2xl w-full">
         <Tabs
           orientation="vertical"
           value={value}
@@ -63,8 +64,26 @@ export default function TabProduct({
           aria-label="Vertical tabs example"
           sx={{
             borderRight: 1,
+            margin: 1,
             borderColor: "divider",
-            width: "375px",
+            width: "210px",
+            "& .MuiTab-root": {
+              width: "100%",
+              alignItems: "flex-start",
+              textAlign: "left",
+              "&.Mui-selected": {
+                color: "#66aacb", // Change text color of the selected tab
+              },
+            },
+            "& .MuiTab-wrapper": {
+              alignItems: "flex-start",
+              textAlign: "left",
+            },
+          }}
+          TabIndicatorProps={{
+            style: {
+              backgroundColor: "#66aacb", // Change the color of the indicator line
+            },
           }}
         >
           <Tab label="Mango" {...a11yProps(0)} />
@@ -76,7 +95,7 @@ export default function TabProduct({
           <TabPanel value={value} index={index} key={product.fields.productId}>
             <div
               key={product.fields.productId}
-              className=" mt-3 flex flex-col items-center"
+              className="my-3 flex flex-col items-center"
             >
               <Image
                 className="drop-shadow-md"
@@ -84,6 +103,7 @@ export default function TabProduct({
                 src={images[product.fields.productId - 1]}
                 width={200}
                 height={200}
+                priority={true}
               />
               <p className="text-blue-deep font-semibold">
                 {product.fields.title}

@@ -17,7 +17,6 @@ async function fetchTestimony(): Promise<
     const testimonies = await client.getEntries<TypeTestimonyFields>({
       content_type: "testimoni",
     });
-    // console.log(data.items);
     return testimonies.items;
   } catch (err) {
     throw new Error("Unable to catch testimony");

@@ -77,23 +77,32 @@ function ProductCard({
       </div>
 
       <div className="hidden lg:flex lg:flex-row lg:space-x-3 justify-between lg:px-5 xl:px-24">
-        {products.map((product) => (
-          <div
-            key={product.fields.productId}
-            className="mb-4 flex flex-col items-center"
-          >
-            <Image
-              className="drop-shadow-md"
-              alt="image"
-              src={productImages[product.fields.productId - 1]}
-              width={200}
-              height={200}
-            />
-            <p className="text-blue-deep font-semibold">
-              {product.fields.title}
-            </p>
+        {products.length > 0 ? (
+          products.map((product) => (
+            <div
+              key={product.fields.productId}
+              className="mb-4 flex flex-col items-center"
+            >
+              <Image
+                className="drop-shadow-md"
+                alt="image"
+                src={productImages[product.fields.productId - 1]}
+                width={200}
+                height={200}
+              />
+              <p className="text-blue-deep font-semibold">
+                {product.fields.title}
+              </p>
+            </div>
+          ))
+        ) : (
+          // Placeholder content
+          <div className="bg-white p-4 shadow rounded">
+            <div className="w-48 h-48 animate-pulse rounded" />
+            <h3 className="mt-2 text-lg font-bold h-6 w-3/4 animate-pulse"></h3>
+            <p className="text-gray-700  h-4 w-full animate-pulse"></p>
           </div>
-        ))}
+        )}
       </div>
     </>
   );

@@ -19,6 +19,7 @@ export default function Header() {
           className="h-10 w-auto md:h-12"
           width={80}
           height={80}
+          sizes={"(max-width: 768px) 83vw, 100vw"}
         />
       </Link>
       <NavBarLarge />

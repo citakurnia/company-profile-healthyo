@@ -2,20 +2,20 @@ import { Button, Input } from "@mui/material";
 
 export default function Newsletter() {
   return (
-    <>
-      <div className="md:mr-4">Subscribe to our newsletter:</div>
-      <div className="flex flex-row mt-2 space-x-3 md:mt-0">
+    <div className="flex flex-col md:flex-row md:space-x-4 items-start">
+      <div>Subscribe to our newsletter:</div>
+      <div className="flex flex-row mt-2 space-x-3 md:mt-0 items-start">
         <Input
           placeholder="Email"
           size="small"
           sx={{
-            width: "150px", // Custom width
+            width: "150px",
             "& .MuiInputBase-input": {
-              height: "18px", // Custom height
-              fontSize: "14px", // Custom font size
+              height: "18px",
+              fontSize: "14px",
             },
             "& .MuiInputLabel-root": {
-              fontSize: "10px", // Custom label font size
+              fontSize: "10px",
             },
           }}
         />
@@ -23,18 +23,18 @@ export default function Newsletter() {
           variant="contained"
           size="small"
           sx={{
-            height: "24px", // Custom height
-            backgroundColor: "#4fbcf2", // Custom background color
-            color: "#FFFFFF", // Custom text color
-            fontSize: "12px", // Custom font size
+            height: "24px",
+            backgroundColor: "#4fbcf2",
+            color: "#FFFFFF",
+            fontSize: "12px",
             "&:hover": {
-              backgroundColor: "#30ace9", // Custom background color on hover
+              backgroundColor: "#30ace9",
             },
           }}
         >
           SUBMIT
         </Button>
       </div>
-    </>
+    </div>
   );
 }

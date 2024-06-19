@@ -31,12 +31,8 @@ export default function Team() {
 
   return (
     <>
-      {/* <div className="bg-white/50 rounded-2xl pb-4 m-5"> */}
       <h2 className="text-center pt-3 mb-3 text-black/70 z-50">TEAM</h2>
-      <div
-        className="lg:hidden"
-        style={{ textAlign: "center", padding: "20px" }}
-      >
+      <div className="lg:hidden text-center px-2 pt-2">
         <CarouselUsers users={users} expertise={expertise} />
       </div>
 
@@ -46,9 +42,8 @@ export default function Team() {
             <Image
               src={user.picture.large}
               alt="User Photo"
-              layout="fixed"
-              width={125}
-              height={125}
+              width={120}
+              height={120}
               className="rounded-full"
             />
             <div className="mt-2 font-bold text-blue-deep text-lg">{`${user.name.first} ${user.name.last}`}</div>
@@ -58,7 +53,6 @@ export default function Team() {
           </div>
         ))}
       </div>
-      {/* </div> */}
     </>
   );
 }
