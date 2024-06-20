@@ -1,6 +1,7 @@
 import Link from "next/link";
+import { ReactNode } from "react";
 
-export default function NavBarLarge() {
+export default function NavBarLarge(): ReactNode {
   return (
     <>
       <nav className="hidden md:flex md:pr-4 md:space-x-8 lg:space-x-10">

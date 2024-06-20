@@ -2,13 +2,15 @@ import UserTeam from "@/types/random-user/TypeUserTeam";
 import Image from "next/image";
 import Carousel from "react-material-ui-carousel";
 
+import { ReactNode } from "react";
+
 export default function CarouselUsers({
   users,
   expertise,
 }: {
   users: UserTeam[];
   expertise: string[];
-}) {
+}): ReactNode {
   return (
     <>
       <Carousel>

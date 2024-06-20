@@ -1,8 +1,10 @@
-import { Entry } from "contentful";
-import { TypeTestimonyFields } from "@/types/contentful";
 import Image from "next/image";
 import Carousel from "react-material-ui-carousel";
 import UserTeam from "@/types/random-user/TypeUserTeam";
+
+import { Entry } from "contentful";
+import { TypeTestimonyFields } from "@/types/contentful";
+import { ReactNode } from "react";
 
 export default function CarouselTestimony({
   testimonies,
@@ -10,7 +12,7 @@ export default function CarouselTestimony({
 }: {
   testimonies: Entry<TypeTestimonyFields, undefined, string>[];
   users: UserTeam[];
-}) {
+}): ReactNode {
   return (
     <>
       <Carousel>

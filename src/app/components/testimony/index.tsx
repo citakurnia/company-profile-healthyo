@@ -1,14 +1,19 @@
 "use client";
 
+import UserTeam from "@/types/random-user/TypeUserTeam";
+import Image from "next/image";
+import dynamic from "next/dynamic";
+import useIsMobile from "@/utils/hooks/useIsMobile";
+
 import { client } from "@/utils/contentful";
 import { Entry } from "contentful";
 import { TypeTestimonyFields } from "@/types/contentful";
 import { ReactNode } from "react";
 import { useState, useEffect } from "react";
-import UserTeam from "@/types/random-user/TypeUserTeam";
 
-import Image from "next/image";
-import CarouselTestimony from "./testimony-carousel";
+const CarouselTestimony = dynamic(() => import("./testimony-carousel"), {
+  ssr: false,
+});
 
 async function fetchTestimony(): Promise<
   Entry<TypeTestimonyFields, undefined, string>[]
@@ -64,38 +69,41 @@ function TestimonyCard({
 }: {
   testimonies: Entry<TypeTestimonyFields, undefined, string>[];
   users: UserTeam[];
-}) {
+}): ReactNode {
+  const isMobile = useIsMobile();
   return (
     <>
       <h2 className="pb-6 text-center">
         <div className="bg-white/50 rounded-full py-1">TESTIMONY</div>
       </h2>
-      <div className="lg:hidden" style={{ textAlign: "center" }}>
-        <CarouselTestimony testimonies={testimonies} users={users} />
-      </div>
-
-      <div className="hidden lg:flex lg:flex-row lg:space-x-5 justify-between lg:px-5">
-        {testimonies.map((testimony, index) => (
-          <div
-            key={testimony.sys.id}
-            className="mb-2 w-1/3 flex flex-col items-center"
-          >
-            <p className="mb-4 text-lg font-semibold text-black/80">
-              {`${users[index].name.first} ${users[index].name.last}`}
-            </p>
-            <Image
-              className="rounded-full"
-              alt="image"
-              src={users[index].picture.large}
-              width={125}
-              height={125}
-            />
-            <p className="text-sm mt-4 p-3 text-black/80 text-pretty text-center bg-pink-soft/60 rounded-xl">
-              &quot;{testimony.fields.testimonyText}&quot;
-            </p>
-          </div>
-        ))}
-      </div>
+      {isMobile ? (
+        <div className="lg:hidden" style={{ textAlign: "center" }}>
+          <CarouselTestimony testimonies={testimonies} users={users} />
+        </div>
+      ) : (
+        <div className="hidden lg:flex lg:flex-row lg:space-x-5 justify-between lg:px-5">
+          {testimonies.map((testimony, index) => (
+            <div
+              key={testimony.sys.id}
+              className="mb-2 w-1/3 flex flex-col items-center"
+            >
+              <p className="mb-4 text-lg font-semibold text-black/80">
+                {`${users[index].name.first} ${users[index].name.last}`}
+              </p>
+              <Image
+                className="rounded-full"
+                alt="image"
+                src={users[index].picture.large}
+                width={125}
+                height={125}
+              />
+              <p className="text-sm mt-4 p-3 text-black/80 text-pretty text-center bg-pink-soft/60 rounded-xl">
+                &quot;{testimony.fields.testimonyText}&quot;
+              </p>
+            </div>
+          ))}
+        </div>
+      )}
     </>
   );
 }

@@ -1,7 +1,8 @@
-import { TypeProductFields } from "@/types/contentful";
-import { Entry } from "contentful";
 import Image from "next/image";
 import Carousel from "react-material-ui-carousel";
+import { TypeProductFields } from "@/types/contentful";
+import { Entry } from "contentful";
+import { ReactNode } from "react";
 
 export default function CarouselProduct({
   products,
@@ -9,7 +10,7 @@ export default function CarouselProduct({
 }: {
   products: Entry<TypeProductFields, undefined, string>[];
   images: string[];
-}) {
+}): ReactNode {
   return (
     <>
       <Carousel>

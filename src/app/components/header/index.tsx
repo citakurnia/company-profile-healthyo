@@ -1,13 +1,14 @@
 "use client";
 
 import Link from "next/link";
-import { SvgMenuButton } from "@/app/assets/svg-collection";
-import { useState } from "react";
 import Image from "next/image";
 import NavBarLarge from "./navbarlarge";
 import NavBarSmall from "./navbarsmall";
 
-export default function Header() {
+import { SvgMenuButton } from "@/app/assets/svg-collection";
+import { ReactNode, useState } from "react";
+
+export default function Header(): ReactNode {
   const [isHovered, setIsHovered] = useState(false);
 
   return (

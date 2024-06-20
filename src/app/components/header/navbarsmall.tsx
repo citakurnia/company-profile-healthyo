@@ -1,11 +1,11 @@
 import Link from "next/link";
-import { Dispatch, SetStateAction } from "react";
+import { Dispatch, ReactNode, SetStateAction } from "react";
 
 export default function NavBarSmall({
   setIsHovered,
 }: {
   setIsHovered: Dispatch<SetStateAction<boolean>>;
-}) {
+}): ReactNode {
   return (
     <>
       <div className="flex flex-col md:hidden bg-white-broken/90 shadow-lg rounded-lg p-4 absolute top-12 right-4 w-40">

@@ -1,6 +1,6 @@
 import Image from "next/image";
-import { ReactNode } from "react";
 import RichText from "@/utils/richtext";
+import { ReactNode } from "react";
 
 export default function SectionCard({
   sectionDetail,

@@ -1,14 +1,15 @@
 "use client";
 
-import React from "react";
 import dynamic from "next/dynamic";
 import Image from "next/image";
 import useIsMobile from "@/utils/hooks/useIsMobile";
+
+import React, { ReactNode } from "react";
 import { useUserContext } from "@/utils/context/user-context";
 
 const CarouselUsers = dynamic(() => import("./users-team"), { ssr: false });
 
-export default function Team() {
+export default function Team(): ReactNode {
   const { users } = useUserContext();
   const isMobile = useIsMobile();
 

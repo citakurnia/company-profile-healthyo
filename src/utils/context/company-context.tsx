@@ -20,13 +20,18 @@ const CompanyDetailsContext = createContext<
   CompanyDetailsContextProps | undefined
 >(undefined);
 
-export function CompanyDetailsProvider({ children }: { children: ReactNode }) {
+export function CompanyDetailsProvider({
+  children,
+}: {
+  children: ReactNode;
+}): ReactNode {
   const [companyDetails, setCompanyDetails] = useState<
     Entry<TypeCompanyDetailsFields, undefined, string>[]
   >([]);
+
   const [isLoading, setIsLoading] = useState(true);
 
-  async function fetchCompanyDetails() {
+  async function fetchCompanyDetails(): Promise<void> {
     try {
       const data = await client.getEntries<TypeCompanyDetailsFields>({
         content_type: "companyDetails",

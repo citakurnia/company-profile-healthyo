@@ -1,11 +1,12 @@
 import * as React from "react";
 import { SVGProps } from "react";
+import { ReactNode } from "react";
 
 const width = 25;
 const height = 25;
 const viewBox = "0 0 50 50";
 
-export function SvgInstagram(props: SVGProps<SVGSVGElement>) {
+export function SvgInstagram(props: SVGProps<SVGSVGElement>): ReactNode {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -19,7 +20,7 @@ export function SvgInstagram(props: SVGProps<SVGSVGElement>) {
   );
 }
 
-export function SvgTwitter(props: SVGProps<SVGSVGElement>) {
+export function SvgTwitter(props: SVGProps<SVGSVGElement>): ReactNode {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -33,7 +34,7 @@ export function SvgTwitter(props: SVGProps<SVGSVGElement>) {
   );
 }
 
-export function SvgEmail(props: SVGProps<SVGSVGElement>) {
+export function SvgEmail(props: SVGProps<SVGSVGElement>): ReactNode {
   return (
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 96" {...props}>
       <path d="M0 11.283V8a8 8 0 0 1 8-8h112a8 8 0 0 1 8 8v3.283l-64 40zm66.12 48.11a4.004 4.004 0 0 1-4.24 0L0 20.717V88a8 8 0 0 0 8 8h112a8 8 0 0 0 8-8V20.717z" />
@@ -41,7 +42,7 @@ export function SvgEmail(props: SVGProps<SVGSVGElement>) {
   );
 }
 
-export function SvgMenuButton(props: SVGProps<SVGSVGElement>) {
+export function SvgMenuButton(props: SVGProps<SVGSVGElement>): ReactNode {
   return (
     <svg
       width={23}
@@ -62,7 +63,7 @@ export function SvgMenuButton(props: SVGProps<SVGSVGElement>) {
   );
 }
 
-export function SvgXIcon(props: SVGProps<SVGSVGElement>) {
+export function SvgXIcon(props: SVGProps<SVGSVGElement>): ReactNode {
   return (
     <svg
       className="w-6 h-6"

@@ -19,13 +19,17 @@ const ProductContext = createContext<ProductContextProps | undefined>(
   undefined
 );
 
-export function ProductProvider({ children }: { children: ReactNode }) {
+export function ProductProvider({
+  children,
+}: {
+  children: ReactNode;
+}): ReactNode {
   const [products, setProducts] = useState<
     Entry<TypeProductFields, undefined, string>[]
   >([]);
 
   useEffect(() => {
-    async function fetchProduct() {
+    async function fetchProduct(): Promise<void> {
       if (products.length === 0) {
         try {
           const data = await client.getEntries<TypeProductFields>({

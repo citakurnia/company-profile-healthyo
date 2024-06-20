@@ -1,11 +1,10 @@
-import React from "react";
+import { ReactNode } from "react";
+import { CircularProgress } from "@mui/material";
 
-const Loading = () => {
+export default function Loading(): ReactNode {
   return (
     <div className="flex justify-center items-center h-screen">
-      <p>Loading...</p>
+      <CircularProgress />
     </div>
   );
-};
-
-export default Loading;
+}

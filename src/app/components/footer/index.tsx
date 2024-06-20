@@ -1,8 +1,8 @@
-import React from "react";
+import React, { ReactNode } from "react";
 import SocialMediaIcons from "./socialMedia";
 import Newsletter from "./newsletter";
 
-export default function Footer() {
+export default function Footer(): ReactNode {
   const svgClassName = "text-blue-deep/70 hover:text-white-broken";
   return (
     <div className="flex flex-col">

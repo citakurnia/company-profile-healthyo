@@ -1,6 +1,7 @@
 import { Button, Input } from "@mui/material";
+import { ReactNode } from "react";
 
-export default function Newsletter() {
+export default function Newsletter(): ReactNode {
   return (
     <div className="flex flex-col md:flex-row md:space-x-4 items-start">
       <div>Subscribe to our newsletter:</div>

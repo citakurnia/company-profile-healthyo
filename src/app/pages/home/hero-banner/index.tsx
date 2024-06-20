@@ -1,6 +1,7 @@
 import Image from "next/image";
+import { ReactNode } from "react";
 
-export default function HeroBanner() {
+export default function HeroBanner(): ReactNode {
   return (
     <>
       <div className="relative h-[500px] lg:h-svh">

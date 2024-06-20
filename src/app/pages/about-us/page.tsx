@@ -1,9 +1,9 @@
 "use client";
 
-import { ReactNode } from "react";
-import { useCompanyDetailsContext } from "@/utils/context/company-context";
 import Team from "@/app/components/team";
 import SectionCard from "@/app/components/company-section/company-card";
+import { ReactNode } from "react";
+import { useCompanyDetailsContext } from "@/utils/context/company-context";
 
 export default function AboutUs(): ReactNode {
   const { companyDetails } = useCompanyDetailsContext();

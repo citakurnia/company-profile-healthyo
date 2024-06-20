@@ -1,4 +1,5 @@
 import * as React from "react";
+import { ReactNode } from "react";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import Typography from "@mui/material/Typography";
@@ -12,7 +13,7 @@ interface TabPanelProps {
   value: number;
 }
 
-function TabPanel(props: TabPanelProps) {
+function TabPanel(props: TabPanelProps): ReactNode {
   const { children, value, index, ...other } = props;
 
   return (
@@ -34,7 +35,12 @@ function TabPanel(props: TabPanelProps) {
   );
 }
 
-function a11yProps(index: number) {
+interface allyProps {
+  id: string;
+  "aria-controls": string;
+}
+
+function a11yProps(index: number): allyProps {
   return {
     id: `vertical-tab-${index}`,
     "aria-controls": `vertical-tabpanel-${index}`,
@@ -47,7 +53,7 @@ export default function TabProduct({
 }: {
   products: Entry<TypeProductFields, undefined, string>[];
   images: string[];
-}) {
+}): ReactNode {
   const [value, setValue] = React.useState(0);
 
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {

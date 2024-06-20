@@ -31,7 +31,7 @@ function ProductCard({
   products,
 }: {
   products: Entry<TypeProductFields, undefined, string>[];
-}) {
+}): ReactNode {
   const isMobile = useIsMobile();
 
   const productImages = [

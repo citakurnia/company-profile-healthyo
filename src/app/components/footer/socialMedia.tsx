@@ -3,12 +3,13 @@ import {
   SvgEmail,
   SvgInstagram,
 } from "@/app/assets/svg-collection";
+import { ReactNode } from "react";
 
 export default function SocialMediaIcons({
   svgClassName,
 }: {
   svgClassName: string;
-}) {
+}): ReactNode {
   return (
     <>
       <a

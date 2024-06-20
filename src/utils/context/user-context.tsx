@@ -16,10 +16,10 @@ interface UserContextProps {
 
 const UserContext = createContext<UserContextProps | undefined>(undefined);
 
-export function UserProvider({ children }: { children: ReactNode }) {
+export function UserProvider({ children }: { children: ReactNode }): ReactNode {
   const [users, setUsers] = useState<UserTeam[]>([]);
 
-  async function fetchUsers() {
+  async function fetchUsers(): Promise<void> {
     if (users.length === 0) {
       try {
         const response = await fetch("https://randomuser.me/api/?results=4");
