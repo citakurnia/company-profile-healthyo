@@ -17,10 +17,6 @@ const CarouselProduct = dynamic(() => import("./product-carousel"), {
 export default function ProductOverview(): ReactNode {
   const { products } = useProductContext();
 
-  if (!products || products.length === 0) {
-    throw new Promise(() => {});
-  }
-
   return (
     <>
       <div className="flex flex-col py-4 px-4 m-6 rounded-3xl bg-blue-soft">

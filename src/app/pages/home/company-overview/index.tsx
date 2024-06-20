@@ -8,9 +8,7 @@ import { useCompanyDetailsContext } from "@/utils/context/company-context";
 
 export default function CompanyOverview(): ReactNode {
   const { companyDetails } = useCompanyDetailsContext();
-  if (!companyDetails || companyDetails.length === 0) {
-    throw new Promise(() => {});
-  }
+
   const historyDetail = companyDetails.filter(
     (entry) => entry.fields.section === "History"
   )[0];

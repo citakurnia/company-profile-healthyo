@@ -39,7 +39,7 @@ export function ProductProvider({ children }: { children: ReactNode }) {
     }
 
     fetchProduct();
-  }, [products]);
+  }, []);
 
   return (
     <ProductContext.Provider value={{ products }}>
@@ -48,7 +48,7 @@ export function ProductProvider({ children }: { children: ReactNode }) {
   );
 }
 
-export function useProductContext() {
+export function useProductContext(): ProductContextProps {
   const context = useContext(ProductContext);
   if (context === undefined) {
     throw new Error("useProductContext must be used within a ProductProvider");

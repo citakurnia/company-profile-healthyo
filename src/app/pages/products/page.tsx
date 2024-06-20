@@ -15,10 +15,6 @@ const TabProduct = dynamic(() => import("./product-tab"), { ssr: false });
 export default function ProductOverview(): ReactNode {
   const { products } = useProductContext();
 
-  if (!products || products.length === 0) {
-    throw new Promise(() => {});
-  }
-
   return (
     <>
       <div className="flex flex-col text-center pt-5 my-7 text-3xl md:text-4xl font-bold text-white-broken drop-shadow-md">

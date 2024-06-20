@@ -10,6 +10,7 @@ import {
 import { TypeCompanyDetailsFields } from "@/types/contentful";
 import { Entry } from "contentful";
 import { client } from "../contentful";
+import Loading from "@/app/loading";
 
 interface CompanyDetailsContextProps {
   companyDetails: Entry<TypeCompanyDetailsFields, undefined, string>[];
@@ -23,32 +24,33 @@ export function CompanyDetailsProvider({ children }: { children: ReactNode }) {
   const [companyDetails, setCompanyDetails] = useState<
     Entry<TypeCompanyDetailsFields, undefined, string>[]
   >([]);
+  const [isLoading, setIsLoading] = useState(true);
+
+  async function fetchCompanyDetails() {
+    try {
+      const data = await client.getEntries<TypeCompanyDetailsFields>({
+        content_type: "companyDetails",
+      });
+      setCompanyDetails(data.items);
+    } catch (err) {
+      console.error("Unable to fetch company details", err);
+    } finally {
+      setIsLoading(false);
+    }
+  }
 
   useEffect(() => {
-    async function fetchCompanyDetails() {
-      if (companyDetails.length === 0) {
-        try {
-          const data = await client.getEntries<TypeCompanyDetailsFields>({
-            content_type: "companyDetails",
-          });
-          setCompanyDetails(data.items);
-        } catch (err) {
-          console.error("Unable to catch company details", err);
-        }
-      }
-    }
-
     fetchCompanyDetails();
-  }, [companyDetails]);
+  }, []);
 
   return (
     <CompanyDetailsContext.Provider value={{ companyDetails }}>
-      {children}
+      {!isLoading ? children : <Loading />}
     </CompanyDetailsContext.Provider>
   );
 }
 
-export function useCompanyDetailsContext() {
+export function useCompanyDetailsContext(): CompanyDetailsContextProps {
   const context = useContext(CompanyDetailsContext);
   if (context === undefined) {
     throw new Error(

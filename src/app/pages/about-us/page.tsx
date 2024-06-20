@@ -7,9 +7,7 @@ import SectionCard from "@/app/components/company-section/company-card";
 
 export default function AboutUs(): ReactNode {
   const { companyDetails } = useCompanyDetailsContext();
-  if (!companyDetails || companyDetails.length === 0) {
-    throw new Promise(() => {});
-  }
+
   const historyDetail = companyDetails?.filter(
     (entry) => entry.fields.section === "History"
   )[0];
