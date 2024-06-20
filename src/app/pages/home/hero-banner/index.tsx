@@ -6,7 +6,6 @@ export default function HeroBanner() {
       <div className="relative h-[500px] lg:h-svh">
         <div className="relative h-[500px] lg:h-svh bg-gradient-to-b from-white/40 from-10% via-white/60 via-30% to-white/0 z-30 to-90%" />
         <Image
-          className="fade-in"
           src="/hero-image.png"
           alt="Hero Banner"
           fill

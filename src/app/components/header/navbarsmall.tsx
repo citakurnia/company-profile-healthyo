@@ -35,7 +35,7 @@ export default function NavBarSmall({
           className="block text-blue-deep hover:text-black/70 font-semibold text-center"
           onClick={() => setIsHovered(false)}
         >
-          TEAM BEHIND
+          TEAM
         </Link>
       </div>
     </>

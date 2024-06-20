@@ -1,5 +1,8 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import { UserProvider } from "@/utils/context/user-context";
+import { CompanyDetailsProvider } from "@/utils/context/company-context";
+import { ProductProvider } from "@/utils/context/product-context";
 import Header from "./components/header";
 import Footer from "./components/footer";
 import "./globals.css";
@@ -24,7 +27,11 @@ export default function RootLayout({
             <Header />
           </div>
           <main className="relative flex flex-col flex-grow align-top z-10">
-            {children}
+            <UserProvider>
+              <CompanyDetailsProvider>
+                <ProductProvider>{children}</ProductProvider>
+              </CompanyDetailsProvider>
+            </UserProvider>
           </main>
           <div className="relative bg-white-broken/40 w-full rounded-t-3xl mx-auto px-5 pt-4 pb-2 md:pt-4 md:pb-2 z-10 md:px-7 lg:px-10">
             <Footer />
